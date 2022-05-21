@@ -1,0 +1,54 @@
+import * as React from "https://cdn.skypack.dev/react@17.0.1";
+import * as ReactDOM from "https://cdn.skypack.dev/react-dom@17.0.1";
+
+const QuoteBox = () => {
+  
+  const quotes = [
+    '“Either write something worth reading or do something worth writing.”',
+    '"Education is the key to unlock the golden door of freedom.”',
+    '“Genius is one percent inspiration, ninety-nine percent perspiration.”',
+    '“Before anything else, preparation is the key to success.”',
+    '“All creative people want to do the unexpected.”',
+    '“If we worked on the assumption that what is accepted as true really is true, then there would be little hope for advance.”',
+    '“Science knows no country, because knowledge belongs to humanity, and is the torch which illuminates the world.”'
+  ];
+  
+  const authors = [
+    'Benjamin Franklin',
+    'George Washington Carver',
+    'Thomas Edison',
+    'Alexander Graham Bell',
+    'Hedy Lamarr',
+    'Orville and Wilbur Wright',
+    'Louis Pasteur'
+  ];
+  
+  const generateRandomQuote = () => {
+    const index = Math.floor(Math.random() * 7);
+    document.getElementById('text').innerHTML = quotes[index];
+    document.getElementById('author').innerHTML = authors[index];
+  }
+  
+  React.useEffect(() => generateRandomQuote())
+  
+  return (
+     <div id='quote-box'>
+      <p id='text'>text</p>
+      <h2 id='author'>author</h2>
+      <button id='new-quote' onClick={generateRandomQuote}>new</button>
+      <a id='tweet-quote' href="twitter.com/intent/tweet" target="_blank">tweet</a>
+    </div>
+  )
+}
+
+const App = () => {
+  
+  return (
+    <div id='main'>
+      <QuoteBox/>
+    </div>
+    
+  )
+}
+
+ReactDOM.render(<App/>, document.getElementById('root'));
